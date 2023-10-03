@@ -1,0 +1,47 @@
+#Ver IP do servidor:
+ ip add
+
+#Atualizar os repositórios
+nano  /etc/apt/sources.list
+Comente as linhas que estão apontando para o "deb cdrom:" com o #
+Adicione a seguinte linha:deb http://deb.debian.org/debian bullseye main contrib non-free
+
+#Instalar o Servidor SSH:
+apt install openssh-server
+
+#Ver o status do serviço: 
+ systemctl status ssh
+
+#Baixar o Putty
+ https://www.putty.org/
+
+#Ajustar a hora do servidor
+# Removendo pacotes NTP
+apt purge ntp
+ 
+# Instalar pacotes OpenNTPD
+apt install -y openntpd
+ 
+# Parando Serviço OpenNTPD
+systemctl stop openntpd
+ 
+# Configurar Timezone padrão do Servidor (América -> Sua região)
+export PATH=$PATH:/usr/sbin
+dpkg-reconfigure tzdata
+ 
+ 
+# Adicionar servidor NTP.BR
+echo "servers pool.ntp.br" > /etc/openntpd/ntpd.conf
+ 
+# Habilitar e Iniciar Serviço OpenNTPD
+systemctl enable openntpd
+systemctl start openntpd
+
+# Instalar os pacotes de manipulação de arquivos 
+apt install -y xz-utils bzip2 unzip curl
+
+#Instalar extensões obrigatórias
+apt install -y apache2 libapache2-mod-php php-soap php-cas php php-{apcu,cli,common,curl,gd,imap,ldap,mysql,xmlrpc,xml,mbstring,bcmath,intl,zip,redis,bz2} -y
+
+#Instalar extensões opcionais
+ apt-get install php-cli php-cas php-imap php-ldap php-xmlrpc php-soap php-snmp php-apcu php-intl php-zip php-bz2 -y
