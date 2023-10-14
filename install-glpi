@@ -45,3 +45,54 @@ apt install -y apache2 libapache2-mod-php php-soap php-cas php php-{apcu,cli,com
 
 #Instalar extensões opcionais
  apt-get install php-cli php-cas php-imap php-ldap php-xmlrpc php-soap php-snmp php-apcu php-intl php-zip php-bz2 -y
+
+#Mudar para diretório tmp
+ cd /tmp
+#Baixar o GLPI
+ https://glpi-project.org/pt-br/baixar/
+ wget https://github.com/glpi-project/glpi/releases/download/10.0.7/glpi-10.0.7.tgz
+
+
+#Descompactar 
+ tar -xvzf glpi-10.0.7.tgz
+
+#Copiar para a pasta do Apache
+ cp -Rf glpi /var/www/html
+
+#Atribuir as permissões
+ chmod 775 /var/www/html/* -Rf
+
+#Mudar o proprietário 
+ chown www-data. /var/www/html/* -Rf
+
+-------------------------------------------------------------------------------------------------------
+#Alterar o Path para evitar erros do dpkg: 
+ export PATH=$PATH:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+
+#Para não ter que entrar como superusuário e e ter que repetir sempre o processo utilize o comando:
+ echo "PATH="/sbin:/usr/sbin:/bin:/usr/bin:/usr/local/bin:/usr/local/sbin:/usr/games:/usr/local/games"" >> /etc/environment 
+
+#Instalar o MariaDB:
+ apt install mariadb-server -y
+
+
+mysql -uroot -p
+
+CREATE USER 'glpi'@'localhost' IDENTIFIED BY 'P@ssw0rd40';
+CREATE DATABASE glpi;
+GRANT ALL PRIVILEGES ON glpi.* TO 'glpi'@'localhost';
+flush privileges;
+exit
+
+https://dev.mysql.com/get/mysql-apt-config_0.8.26-1_all.deb
+
+dpkg -i mysql-apt-config_0.8.26-1_all.deb
+
+mysql-apt-config_0.8.22-1_all.deb
+
+#Reiniciar o Apache
+systemctl restart apache2
+
+#Testar o acesso
+http://ip-do-servidor/glpi
+
