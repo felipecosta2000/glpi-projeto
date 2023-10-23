@@ -40,3 +40,9 @@ CREATE DATABASE glpi;
 GRANT ALL PRIVILEGES ON glpi.* TO 'glpi'@'localhost';
 flush privileges;
 exit
+
+#Reiniciar o Apache
+systemctl restart apache2
+
+#Testar o acesso
+http://ip-do-servidor/glpi
