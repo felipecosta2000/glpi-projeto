@@ -52,7 +52,6 @@ apt install -y apache2 libapache2-mod-php php-soap php-cas php php-{apcu,cli,com
  https://glpi-project.org/pt-br/baixar/
  wget https://github.com/glpi-project/glpi/releases/download/10.0.7/glpi-10.0.7.tgz
 
-
 #Descompactar 
  tar -xvzf glpi-10.0.7.tgz
 
@@ -65,7 +64,7 @@ apt install -y apache2 libapache2-mod-php php-soap php-cas php php-{apcu,cli,com
 #Mudar o proprietário 
  chown www-data. /var/www/html/* -Rf
 
--------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Alterar o Path para evitar erros do dpkg: 
  export PATH=$PATH:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 
