@@ -37,3 +37,7 @@ apt install -y apache2 libapache2-mod-php php-soap php-cas php php-{apcu,cli,com
 mysql -uroot -p
 
 CREATE USER 'glpi'@'localhost' IDENTIFIED BY 'Glpi@2023';
+CREATE DATABASE glpi;
+GRANT ALL PRIVILEGES ON glpi.* TO 'glpi'@'localhost';
+flush privileges;
+exit
