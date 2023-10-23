@@ -74,7 +74,7 @@ apt install -y apache2 libapache2-mod-php php-soap php-cas php php-{apcu,cli,com
 #Instalar o MariaDB:
  apt install mariadb-server -y
 
-https://dev.mysql.com/get/mysql-apt-config_0.8.26-1_all.deb
+#wget https://dev.mysql.com/get/mysql-apt-config_0.8.26-1_all.deb
 
 dpkg -i mysql-apt-config_0.8.26-1_all.deb
 
