@@ -75,6 +75,11 @@ apt install -y apache2 libapache2-mod-php php-soap php-cas php php-{apcu,cli,com
 #Instalar o MariaDB:
  apt install mariadb-server -y
 
+https://dev.mysql.com/get/mysql-apt-config_0.8.26-1_all.deb
+
+dpkg -i mysql-apt-config_0.8.26-1_all.deb
+
+mysql-apt-config_0.8.22-1_all.deb
 
 mysql -uroot -p
 
@@ -83,12 +88,6 @@ CREATE DATABASE glpi;
 GRANT ALL PRIVILEGES ON glpi.* TO 'glpi'@'localhost';
 flush privileges;
 exit
-
-https://dev.mysql.com/get/mysql-apt-config_0.8.26-1_all.deb
-
-dpkg -i mysql-apt-config_0.8.26-1_all.deb
-
-mysql-apt-config_0.8.22-1_all.deb
 
 #Reiniciar o Apache
 systemctl restart apache2
